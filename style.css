@@ -1,0 +1,217 @@
+/* ==========================================================================
+   KASIRPRO - MODERN POINT OF SALE & FINANCIAL STYLESHEET
+   Clean, Elegant, Responsive, and Professional Design System
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Typography & Base Resets
+   -------------------------------------------------------------------------- */
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --emerald-color: #10b981;
+    --emerald-hover: #059669;
+    --rose-color: #ef4444;
+    --slate-border: #e2e8f0;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   2. Custom Scrollbar Design
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+    transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Hide scrollbar utility for horizontal scroll pills */
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. Glassmorphism & Soft Elevation
+   -------------------------------------------------------------------------- */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.card-elevation {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-elevation:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+}
+
+/* --------------------------------------------------------------------------
+   4. Interactive Animations & Keyframes
+   -------------------------------------------------------------------------- */
+@keyframes popIn {
+    0% {
+        transform: scale(0.94);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-pop-in {
+    animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(12px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseSoft {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.animate-pulse-soft {
+    animation: pulseSoft 2.5s infinite ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    20%, 60% {
+        transform: translateX(-6px);
+    }
+    40%, 80% {
+        transform: translateX(6px);
+    }
+}
+
+.animate-shake {
+    animation: shake 0.4s ease-in-out;
+}
+
+@keyframes glowBorder {
+    0%, 100% {
+        border-color: rgba(99, 102, 241, 0.4);
+    }
+    50% {
+        border-color: rgba(99, 102, 241, 0.9);
+        box-shadow: 0 0 12px rgba(99, 102, 241, 0.25);
+    }
+}
+
+.animate-glow {
+    animation: glowBorder 2s infinite ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   5. Buttons & Interactive States
+   -------------------------------------------------------------------------- */
+button:active {
+    transform: scale(0.97);
+}
+
+.tab-btn {
+    user-select: none;
+}
+
+.pm-btn {
+    user-select: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   6. Table Styles & Micro-interactions
+   -------------------------------------------------------------------------- */
+table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* --------------------------------------------------------------------------
+   7. Thermal Receipt Styling (Optimized for 80mm/58mm POS Printer)
+   -------------------------------------------------------------------------- */
+#receipt-print-area {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+    line-height: 1.35;
+    background-color: #fafafa;
+    border: 1px dashed #cbd5e1;
+}
+
+@media print {
+    /* Hide all elements during print except the receipt section */
+    body * {
+        visibility: hidden !important;
+    }
+
+    #receipt-print-area,
+    #receipt-print-area * {
+        visibility: visible !important;
+    }
+
+    #receipt-print-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 78mm;
+        margin: 0 auto;
+        padding: 4mm;
+        border: none !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        font-family: 'Courier New', Courier, monospace !important;
+        font-size: 11px !important;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+}
